@@ -1,0 +1,76 @@
+    <div class="body">
+      <section class="container">
+        <h3 class="main-heading">Space X Launch Program</h3>
+      </section>
+      <section class="container">
+        <div class="filter-wrapper inner-container">
+          <div class="filter-container">
+            <h2 class="filter-main-header">Filters</h2>
+            <div class="filter-card">
+              <h2 class="filter-header">Launch Year</h2>
+              <div class="filter-body">
+                <div *ngFor="let filter of filterData" class="btn-container">
+
+                  <button type="button" class="btn year-btn" [ngClass]="{'active':activeCss(filter)}"
+                    (click)="onClickyear(filter)"><span>{{filter.Year}}</span></button>
+                </div>
+              </div>
+            </div>
+            <div class="filter-card">
+              <h2 class="filter-header">Successful Launch</h2>
+              <div class="filter-body">
+                <!-- <button class="btn launch-btn">True</button> -->
+                <button type="button" (click)="launchClick(true)" [ngClass]="{'active':successLanch == true}"
+                  class="btn launch-btn"><span>True</span></button>
+                <!-- <button class="btn launch-btn">False</button> -->
+                <button type="button" (click)="launchClick(false)" [ngClass]="{'active':successLanch == false}"
+                  class="btn launch-btn"><span>False</span></button>
+              </div>
+            </div>
+            <div class="filter-card">
+              <h2 class="filter-header">Successful Landing</h2>
+              <div class="filter-body">
+                <button type="button" (click)="landClick(true)" [ngClass]="{'active':successfulLand == true}"
+                  class="btn landing-btn"><span>True</span></button>
+
+                <button type="button" (click)="landClick(false)" [ngClass]="{'active':successfulLand == false}"
+                  class="btn landing-btn"><span>False</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-wrapper inner-container">
+          <div class="product-container">
+            <div *ngFor="let missioninfor of articles" class="product-card-container">
+              <div class="product-card">
+                <div class="product-img ">
+                  <img src="{{missioninfor.links.mission_patch_small}}" class="imgcss" alt="">
+                </div>
+                <div class="product-details">
+                  <h3 class="product-name">{{missioninfor.mission_name}}</h3>
+                  <ul class="product-properties">
+                    <li>
+                      <span class="name">Mission ID:</span>
+                      <span class="value">{{missioninfor.mission_id}}</span>
+                    </li>
+                    <li>
+                      <span class="name">Launch Year:</span>
+                      <span class="value">{{missioninfor.launch_year}}</span>
+                    </li>
+                    <li>
+                      <span class="name">Successful Launch:</span>
+                      <span class="value">{{missioninfor.launch_success}}</span>
+                    </li>
+                    <li>
+                      <span class="name">Successful Landing:</span>
+                      <span class="value">{{missioninfor.rocket.first_stage.cores.land_success}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
